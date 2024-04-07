@@ -1,0 +1,19 @@
+﻿{
+    "DimensionalType" : "Two",
+    "NodeXCount": 2,
+    "NodeYCount": 2,
+    "DischargeX": 1,
+    "DischargeY": 1,
+    "StartX": 0,
+    "StartY": 0,
+    "EndX": 2,
+    "EndY": 2,
+    "Functions": {
+      "FunX": "1",
+      "FunY": "2",
+      "Mu": "1",
+      "Gamma": "1",
+      "Tetta": "1"
+    }
+  
+}
