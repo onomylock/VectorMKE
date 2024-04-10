@@ -7,8 +7,6 @@ namespace VectorMKE.Services;
 
 public class GlobalMatrixGenService
 {
-    
-    
     public Global GetGlobalData(Mesh mesh)
     {
         var data = new Global();

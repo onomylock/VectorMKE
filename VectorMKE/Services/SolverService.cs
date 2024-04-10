@@ -99,6 +99,5 @@ public class SolverService
         res.ToList().ForEach(_ => Console.WriteLine(_.ToString()));
         var trueVec = DenseVector.OfArray(_options.TrueVector.ToArray());
         Console.WriteLine((res - trueVec).InfinityNorm() / trueVec.InfinityNorm());
-        //(res -  _options.TrueVector).InfinityNorm();
     }
 }

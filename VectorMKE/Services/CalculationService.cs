@@ -1,6 +1,5 @@
 ﻿using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
-using MathNet.Numerics.LinearAlgebra;
 using VectorMKE.Enums;
 using VectorMKE.Models;
 
@@ -62,17 +61,6 @@ public class CalculationService(IFunctionService functionService, Mesh mesh) : I
         
         vectF[3] = functionService.GetFuncValue(FunctionType.FunY, Math.Abs(mesh.Edges[rect.Elements[3]].P2.X - mesh.Edges[rect.Elements[3]].P1.X),
             mesh.Edges[rect.Elements[3]].P1.Y);
-        // vectF[0] = functionService.GetFuncValue(FunctionType.FunX, Math.Abs(mesh.Edges[rect.Elements[2]].P2.X - mesh.Edges[rect.Elements[2]].P1.X) / 2,
-        //     mesh.Edges[rect.Elements[2]].P1.Y);
-        //
-        // vectF[1] = functionService.GetFuncValue(FunctionType.FunX, Math.Abs(mesh.Edges[rect.Elements[3]].P2.X - mesh.Edges[rect.Elements[3]].P1.X) / 2,
-        //     mesh.Edges[rect.Elements[3]].P1.Y);
-        //
-        // vectF[2] = functionService.GetFuncValue(FunctionType.FunY, mesh.Edges[rect.Elements[0]].P1.X,
-        //     Math.Abs((mesh.Edges[rect.Elements[0]].P2.Y - mesh.Edges[rect.Elements[0]].P1.Y) / 2));
-        //
-        // vectF[3] = functionService.GetFuncValue(FunctionType.FunY, mesh.Edges[rect.Elements[1]].P1.X,
-        //     Math.Abs((mesh.Edges[rect.Elements[1]].P2.Y - mesh.Edges[rect.Elements[1]].P1.Y) / 2));
         return vectF;
     }
 

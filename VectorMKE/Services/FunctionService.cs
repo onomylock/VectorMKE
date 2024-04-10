@@ -26,11 +26,6 @@ public class FunctionService: IFunctionService
         }
     }
 
-    private void SetGenericExpression(FunctionType functionType,string func)
-    {
-        
-    }
-    
     public double GetFuncValue(FunctionType functionType ,double x = 0, double y = 0)
     {
         _expressionContext.Variables["x"] = x;

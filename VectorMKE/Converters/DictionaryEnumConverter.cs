@@ -84,8 +84,7 @@ public class DictionaryTKeyEnumTValueConverter : JsonConverterFactory
                     }
 
                     string? propertyName = reader.GetString();
-
-                    // For performance, parse with ignoreCase:false first.
+                    
                     if (!Enum.TryParse(propertyName, ignoreCase: false, out TKey key) &&
                         !Enum.TryParse(propertyName, ignoreCase: true, out key))
                     {
