@@ -14,7 +14,7 @@ public interface ICalculationService
     Vector<double> CalculateLocalB(Matrix<double> M, Vector<double> f);
 }
 
-public class CalculationService(IExpressionEvaluatorService expressionEvaluatorService, Mesh mesh) : ICalculationService
+public class CalculationService(IFunctionService functionService, Mesh mesh) : ICalculationService
 {
     private Matrix<double> Mtmp = DenseMatrix.OfArray(new double[,]
         {
@@ -26,7 +26,7 @@ public class CalculationService(IExpressionEvaluatorService expressionEvaluatorS
     
     public Matrix<double> CalculateLocalG(Rectangle rect)
     {
-        double mu = expressionEvaluatorService.GetFuncValue(FunctionType.Mu);
+        double mu = functionService.GetFuncValue(FunctionType.Mu);
 
         var hyhx = rect.Hy / rect.Hx;
         var hxhy = rect.Hx / rect.Hy;
@@ -42,7 +42,7 @@ public class CalculationService(IExpressionEvaluatorService expressionEvaluatorS
 
     public Matrix<double> CalculateLocalM(Rectangle rect)
     {
-        var coeff = expressionEvaluatorService.GetFuncValue(FunctionType.Gamma)
+        var coeff = functionService.GetFuncValue(FunctionType.Gamma)
             * rect.Hx * rect.Hy / 6;
         return Mtmp * coeff;
     }
@@ -51,17 +51,28 @@ public class CalculationService(IExpressionEvaluatorService expressionEvaluatorS
     {
         var vectF = DenseVector.Create(4, 0);
         
-        vectF[0] = expressionEvaluatorService.GetFuncValue(FunctionType.FunY, mesh.Edges[rect.Elements[0]].P1.X,
+        vectF[0] = functionService.GetFuncValue(FunctionType.FunX, mesh.Edges[rect.Elements[0]].P1.X,
             Math.Abs((mesh.Edges[rect.Elements[0]].P2.Y - mesh.Edges[rect.Elements[0]].P1.Y) / 2));
         
-        vectF[1] = expressionEvaluatorService.GetFuncValue(FunctionType.FunY, mesh.Edges[rect.Elements[1]].P1.X,
+        vectF[1] = functionService.GetFuncValue(FunctionType.FunX, mesh.Edges[rect.Elements[1]].P1.X,
             Math.Abs((mesh.Edges[rect.Elements[1]].P2.Y - mesh.Edges[rect.Elements[1]].P1.Y) / 2));
         
-        vectF[2] = expressionEvaluatorService.GetFuncValue(FunctionType.FunX, Math.Abs(mesh.Edges[rect.Elements[2]].P2.X - mesh.Edges[rect.Elements[2]].P1.X),
+        vectF[2] = functionService.GetFuncValue(FunctionType.FunY, Math.Abs(mesh.Edges[rect.Elements[2]].P2.X - mesh.Edges[rect.Elements[2]].P1.X),
             mesh.Edges[rect.Elements[2]].P1.Y);
         
-        vectF[2] = expressionEvaluatorService.GetFuncValue(FunctionType.FunX, Math.Abs(mesh.Edges[rect.Elements[3]].P2.X - mesh.Edges[rect.Elements[3]].P1.X),
+        vectF[3] = functionService.GetFuncValue(FunctionType.FunY, Math.Abs(mesh.Edges[rect.Elements[3]].P2.X - mesh.Edges[rect.Elements[3]].P1.X),
             mesh.Edges[rect.Elements[3]].P1.Y);
+        // vectF[0] = functionService.GetFuncValue(FunctionType.FunX, Math.Abs(mesh.Edges[rect.Elements[2]].P2.X - mesh.Edges[rect.Elements[2]].P1.X) / 2,
+        //     mesh.Edges[rect.Elements[2]].P1.Y);
+        //
+        // vectF[1] = functionService.GetFuncValue(FunctionType.FunX, Math.Abs(mesh.Edges[rect.Elements[3]].P2.X - mesh.Edges[rect.Elements[3]].P1.X) / 2,
+        //     mesh.Edges[rect.Elements[3]].P1.Y);
+        //
+        // vectF[2] = functionService.GetFuncValue(FunctionType.FunY, mesh.Edges[rect.Elements[0]].P1.X,
+        //     Math.Abs((mesh.Edges[rect.Elements[0]].P2.Y - mesh.Edges[rect.Elements[0]].P1.Y) / 2));
+        //
+        // vectF[3] = functionService.GetFuncValue(FunctionType.FunY, mesh.Edges[rect.Elements[1]].P1.X,
+        //     Math.Abs((mesh.Edges[rect.Elements[1]].P2.Y - mesh.Edges[rect.Elements[1]].P1.Y) / 2));
         return vectF;
     }
 

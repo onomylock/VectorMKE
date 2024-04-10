@@ -7,6 +7,7 @@ public enum FunctionType
 {
     FunX,
     FunY,
+    Fun,
     Mu,
     Gamma,
     Tetta

@@ -1,23 +1,24 @@
 ﻿using Flee.PublicTypes;
 using VectorMKE.Enums;
-using VectorMKE.Models;
 
 namespace VectorMKE.Services;
 
-public interface IExpressionEvaluatorService
+public interface IFunctionService
 {
     double GetFuncValue(FunctionType functionType, double x = 0, double y = 0);
 }
 
-public class ExpressionEvaluatorService: IExpressionEvaluatorService
+public class FunctionService: IFunctionService
 {
     private readonly ExpressionContext _expressionContext;
     private Dictionary<FunctionType ,IGenericExpression<double>> _genericExpressionDictionary;
     
-    public ExpressionEvaluatorService(Dictionary<FunctionType, string> dictionaryOptions)
+    public FunctionService(Dictionary<FunctionType, string> dictionaryOptions)
     {
         _expressionContext = new ExpressionContext();
         _expressionContext.Imports.AddType(typeof(Math));
+        _expressionContext.Variables.Add("x", 0.0);
+        _expressionContext.Variables.Add("y", 0.0);
         _genericExpressionDictionary = new Dictionary<FunctionType, IGenericExpression<double>>();
         foreach (var val in dictionaryOptions)
         {
@@ -34,6 +35,7 @@ public class ExpressionEvaluatorService: IExpressionEvaluatorService
     {
         _expressionContext.Variables["x"] = x;
         _expressionContext.Variables["y"] = y;
-        return _genericExpressionDictionary[functionType].Evaluate();
+        var result = _genericExpressionDictionary[functionType].Evaluate();
+        return result;
     }
 }

@@ -1,19 +1,236 @@
 ﻿{
+    "InputType": "Coord2D",
+    
     "DimensionalType" : "Two",
     "NodeXCount": 2,
     "NodeYCount": 2,
+    
+    "TrueVector": [
+      2, 2, 0, 0, 0, 5, 5, 0, 0, 0, 7, 7
+    ],
+    
+    "Functions": {
+      "FunX": "0",
+      "FunY": "1 + y",
+      "Mu": "1",
+      "Gamma": "1",
+      "Tetta": "-1"
+    },
+    "BoundOptions": [
+      {
+        "SideType": "Left",
+        "BoundType": "First",
+        "Function": "0"
+      },
+      {
+        "SideType": "Right",
+        "BoundType": "First",
+        "Function": "0"
+      },
+      {
+        "SideType": "Bottom",
+        "BoundType": "First",
+        "Function": "2"
+      },
+      {
+        "SideType": "Top",
+        "BoundType": "Second",
+        "Function": "-1"
+      }
+    ],
+
+  "Vector2DOptions":
+  {
     "DischargeX": 1,
     "DischargeY": 1,
     "StartX": 0,
     "StartY": 0,
     "EndX": 2,
-    "EndY": 2,
-    "Functions": {
-      "FunX": "1",
-      "FunY": "2",
-      "Mu": "1",
-      "Gamma": "1",
-      "Tetta": "1"
-    }
-  
+    "EndY": 2
+  },
+
+  "Coord2DOptions": {
+    "Edges": [
+      {
+        "P1": {
+          "X": 1,
+          "Y": 1
+        },
+        "P2": {
+          "X": 3,
+          "Y": 1
+        },
+        "BoundType": "First",
+        "Normal": {
+          "X": 0,
+          "Y": -1
+        }
+      },
+      {
+        "P1": {
+          "X": 3,
+          "Y": 1
+        },
+        "P2": {
+          "X": 6,
+          "Y": 1
+        },
+        "BoundType": "First",
+        "Normal": {
+          "X": 0,
+          "Y": -1
+        }
+      },
+      {
+        "P1": {
+          "X": 1,
+          "Y": 1
+        },
+        "P2": {
+          "X": 1,
+          "Y": 4
+        },
+        "BoundType": "First",
+        "Normal": {
+          "X": -1,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 3,
+          "Y": 1
+        },
+        "P2": {
+          "X": 3,
+          "Y": 4
+        },
+        "BoundType": "None",
+        "Normal": {
+          "X": 0,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 6,
+          "Y": 1
+        },
+        "P2": {
+          "X": 6,
+          "Y": 4
+        },
+        "BoundType": "First",
+        "Normal": {
+          "X": 1,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 1,
+          "Y": 4
+        },
+        "P2": {
+          "X": 3,
+          "Y": 4
+        },
+        "BoundType": "None",
+        "Normal": {
+          "X": 0,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 3,
+          "Y": 4
+        },
+        "P2": {
+          "X": 6,
+          "Y": 4
+        },
+        "BoundType": "None",
+        "Normal": {
+          "X": 0,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 1,
+          "Y": 4
+        },
+        "P2": {
+          "X": 1,
+          "Y": 6
+        },
+        "BoundType": "First",
+        "Normal": {
+          "X": -1,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 3,
+          "Y": 4
+        },
+        "P2": {
+          "X": 3,
+          "Y": 6
+        },
+        "BoundType": "None",
+        "Normal": {
+          "X": 0,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 6,
+          "Y": 4
+        },
+        "P2": {
+          "X": 6,
+          "Y": 6
+        },
+        "BoundType": "First",
+        "Normal": {
+          "X": 1,
+          "Y": 0
+        }
+      },
+      {
+        "P1": {
+          "X": 1,
+          "Y": 6
+        },
+        "P2": {
+          "X": 3,
+          "Y": 6
+        },
+        "BoundType": "Second",
+        "Normal": {
+          "X": 0,
+          "Y": 1
+        }
+      },
+      {
+        "P1": {
+          "X": 3,
+          "Y": 6
+        },
+        "P2": {
+          "X": 6,
+          "Y": 6
+        },
+        "BoundType": "Second",
+        "Normal": {
+          "X": 0,
+          "Y": 1
+        }
+      }
+    ]
+  }
 }

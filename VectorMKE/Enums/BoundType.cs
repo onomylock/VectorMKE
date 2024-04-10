@@ -2,6 +2,7 @@
 
 public enum BoundType
 {
+    None,
     First,
     Second
 }
